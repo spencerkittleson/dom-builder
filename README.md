@@ -1,2 +1,3 @@
-# dom-builder
-a html dom building library 
+# dombuilder
+
+A html dom building library

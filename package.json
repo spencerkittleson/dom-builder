@@ -1,5 +1,5 @@
 {
-  "name": "dom-builder",
+  "name": "@kanmf/dombuilder",
   "version": "1.0.0",
   "description": "a html dom building library via javascript",
   "main": "index.js",
