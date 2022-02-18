@@ -39,13 +39,6 @@ document.body.appendChild(makeElement('a', {href: 'http://foo.bar', span('text')
 
 Builtin exports: a, button, div, p, span, ul, li, input, label, style, slot, table, tr, td, th. For non explicit elements use `makeElement`.
 
-```javascript
-import { makeElement } from "@kanmf/dombuilder";
-
-const br = makeElement("br");
-const br = makeElement("hr");
-```
-
 Build a card with a link and [dataset property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset).
 
 ```javascript
