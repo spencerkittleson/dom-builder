@@ -1,6 +1,6 @@
 {
   "name": "@kanmf/dombuilder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a html dom building library via javascript",
   "module": "index.mjs",
   "scripts": {
@@ -16,7 +16,7 @@
     "html",
     "vanillajs"
   ],
-  "author": "",
+  "author": "@aaronmars,@apatten,@skittleson",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/spencerkittleson/dom-builder/issues"

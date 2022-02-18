@@ -151,27 +151,6 @@ export function svg(svgString, stripTitle = false) {
   return element;
 }
 
-export function component(componentClass, params = {}) {
-  if (!componentClass.create) {
-    if (showWarnings) {
-      console.warn(
-        "Attempting to create a component element that does not implement a `create` function."
-      ); // eslint-disable-line no-console
-    }
-    return;
-  }
-  const componentInstance = componentClass.create(params);
-
-  // The `create()` call returned an instance of componentClass, and it has an `element` property
-  if (componentInstance.element) {
-    return componentInstance.element;
-  }
-
-  // The result of the `create()` call is either a Promise, or an actual DOM node.
-  // Either way, this will be handled in the appending logic later
-  return componentInstance;
-}
-
 export function template(...children) {
   const _template = _makeElement("template");
   children.forEach((child) => {
