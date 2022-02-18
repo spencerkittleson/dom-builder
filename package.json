@@ -1,0 +1,25 @@
+{
+  "name": "dom-builder",
+  "version": "1.0.0",
+  "description": "a html dom building library via javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spencerkittleson/dom-builder.git"
+  },
+  "keywords": [
+    "javascript",
+    "dom",
+    "html",
+    "vanillajs"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spencerkittleson/dom-builder/issues"
+  },
+  "homepage": "https://github.com/spencerkittleson/dom-builder#readme"
+}
