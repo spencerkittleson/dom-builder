@@ -1,7 +1,7 @@
 {
   "name": "@kanmf/dombuilder",
-  "version": "1.0.2",
-  "description": "a html dom building library via javascript",
+  "version": "1.0.3",
+  "description": "HTML Dom building library",
   "module": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
