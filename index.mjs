@@ -138,7 +138,7 @@ export function fragment(...children) {
   return _fragment;
 }
 
-const svgParser = new DOMParser();
+const svgParser = new window.DOMParser();
 export function svg(svgString, stripTitle = false) {
   const element = svgParser.parseFromString(
     svgString,
