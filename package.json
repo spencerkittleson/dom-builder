@@ -3,8 +3,9 @@
   "version": "1.0.3",
   "description": "HTML Dom building library",
   "module": "index.mjs",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,24 @@
   "bugs": {
     "url": "https://github.com/spencerkittleson/dom-builder/issues"
   },
-  "homepage": "https://github.com/spencerkittleson/dom-builder#readme"
+  "homepage": "https://github.com/spencerkittleson/dom-builder#readme",
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "esm": "^3.2.25",
+    "mocha": "^9.2.0",
+    "jsdom": "^19.0.0",
+    "jsdom-global": "^3.0.2"
+  },
+  "mocha": {
+    "diff": true,
+    "extension": [
+      "js",
+      "mjs"
+    ],
+    "reporter": "spec",
+    "require": "esm, jsdom-global/register",
+    "watch-files": [
+      "test/**/*.js"
+    ]
+  }
 }
