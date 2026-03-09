@@ -26,9 +26,9 @@
   "devDependencies": {
     "chai": "^4.3.6",
     "esm": "^3.2.25",
-    "mocha": "^9.2.0",
     "jsdom": "^19.0.0",
-    "jsdom-global": "^3.0.2"
+    "jsdom-global": "^3.0.2",
+    "mocha": "^9.2.0"
   },
   "mocha": {
     "diff": true,
@@ -41,5 +41,8 @@
     "watch-files": [
       "test/**/*.js"
     ]
+  },
+  "dependencies": {
+    "@kanmf/dombuilder": "^1.0.5"
   }
 }
