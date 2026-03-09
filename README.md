@@ -9,7 +9,7 @@
   <a href="https://github.com/spencerkittleson/dom-builder/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
-  <a href="https://github.com/spencerkittleson/dom-builder/blob/master/LICENSE" target="_blank">
+  <a href="https://github.com/spencerkittleson/dom-builder/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/github/license/spencerkittleson/@kanmf/dombuilder" />
   </a>
 </p>
@@ -283,4 +283,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 [Copyright © 2026 Spencer Kittleson](https://github.com/spencerkittleson).<br />
-This project is [MIT](https://github.com/spencerkittleson/dom-builder/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/spencerkittleson/dom-builder/blob/main/LICENSE) licensed.
