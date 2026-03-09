@@ -3,6 +3,7 @@
   "version": "1.0.6",
   "description": "HTML Dom building library",
   "module": "index.mjs",
+  "types": "declarations.d.ts",
   "type": "module",
   "scripts": {
     "test": "mocha"
