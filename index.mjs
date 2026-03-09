@@ -71,7 +71,7 @@ function setStyles(el, styles) {
       el.style[styleName] = styles[styleName];
     } else if (showWarnings) {
       console.warn(
-        `${styleName} is not a valid style for a <${el.tagName.toLowerCase()}>`
+        `${styleName} is not a valid style for a <${el.tagName.toLowerCase()}>`,
       ); // eslint-disable-line no-console
     }
   });
@@ -83,7 +83,7 @@ function setData(el, data) {
       el.dataset[dataKey] = value;
     } else if (showWarnings) {
       console.warn(
-        `Unable to set data property ${value} on <${el.tagName.toLowerCase()}>`
+        `Unable to set data property ${value} on <${el.tagName.toLowerCase()}>`,
       ); // eslint-disable-line no-console
     }
   });
@@ -116,7 +116,7 @@ function _makeElement(type, textOrPropsOrChild, ...otherChildren) {
             el[propName] = value;
           } else if (showWarnings) {
             console.warn(
-              `Unable to set value ${value} for property ${propName} of a <${type}>`
+              `Unable to set value ${value} for property ${propName} of a <${type}>`,
             ); // eslint-disable-line no-console
           }
         } else if (showWarnings) {
@@ -142,7 +142,7 @@ const svgParser = new window.DOMParser();
 export function svg(svgString, stripTitle = false) {
   const element = svgParser.parseFromString(
     svgString,
-    "image/svg+xml"
+    "image/svg+xml",
   ).documentElement;
   if (stripTitle) {
     const title = element.querySelector("title");

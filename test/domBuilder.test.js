@@ -16,6 +16,10 @@ import {
   tr,
   th,
   td,
+  text,
+  template,
+  style,
+  slot,
 } from "../index.mjs";
 describe("DOM Builder", () => {
   describe("makeElement", () => {
@@ -30,7 +34,7 @@ describe("DOM Builder", () => {
       const multiTree = makeElement(
         "div",
         makeElement("div"),
-        makeElement("div")
+        makeElement("div"),
       );
       expect(multiTree.childElementCount).to.equal(2);
     });
@@ -57,7 +61,7 @@ describe("DOM Builder", () => {
       const multiTree = makeElement(
         "div",
         makeElement("div"),
-        makeElement("div")
+        makeElement("div"),
       );
       expect(divTree.childElementCount).to.equal(1);
       expect(arrayTree.childElementCount).to.equal(1);
@@ -121,7 +125,7 @@ describe("DOM Builder", () => {
     });
     it("should create svg from string", () => {
       const svgEl = svg(
-        '<svg xmlns="http://www.w3.org/2000/svg"><title>FOO</title></svg>'
+        '<svg xmlns="http://www.w3.org/2000/svg"><title>FOO</title></svg>',
       );
       expect(svgEl.nodeName).to.equal("svg");
       expect(svgEl.querySelector("title")).to.not.be.null;
@@ -129,7 +133,7 @@ describe("DOM Builder", () => {
     it("should create svg from string with title removed", () => {
       const svgEl = svg(
         '<svg xmlns="http://www.w3.org/2000/svg"><title>FOO</title></svg>',
-        true
+        true,
       );
       expect(svgEl.nodeName).to.equal("svg");
       expect(svgEl.querySelector("title")).to.be.null;
@@ -213,6 +217,96 @@ describe("DOM Builder", () => {
       expect(wrapper.children[0].id).to.equal("the-standard-div-one");
       expect(wrapper.children[1].id).to.equal("the-promised-div-two");
       expect(wrapper.children[2].id).to.equal("the-promised-div-three");
+    });
+    it("should add an element from a promise resolving to object with .element property", async () => {
+      const objWithElement = { element: div({ id: "element-from-object" }) };
+      const divPromise = Promise.resolve(objWithElement);
+      const wrapper = div(divPromise);
+      await divPromise;
+      expect(wrapper.querySelector("#element-from-object")).to.not.be.null;
+    });
+  });
+
+  describe("text function", () => {
+    it("should create a text node", () => {
+      const textNode = text("Hello World");
+      expect(textNode.nodeType).to.equal(Node.TEXT_NODE);
+      expect(textNode.textContent).to.equal("Hello World");
+    });
+  });
+
+  describe("template function", () => {
+    it("should create a template element", () => {
+      const tmpl = template();
+      expect(tmpl.nodeName).to.equal("TEMPLATE");
+      expect(tmpl.content).to.be.an.instanceof(DocumentFragment);
+    });
+    it("should create a template with children", () => {
+      const tmpl = template(div({ id: "child-div" }), span("text"));
+      expect(tmpl.content.childElementCount).to.equal(2);
+      expect(tmpl.content.querySelector("#child-div")).to.not.be.null;
+    });
+  });
+
+  describe("@ prefix custom attributes", () => {
+    it("should set custom attributes using @ prefix", () => {
+      const divEl = div({ "@data-custom": "custom-value" });
+      expect(divEl.getAttribute("data-custom")).to.equal("custom-value");
+    });
+    it("should set multiple @ prefixed attributes", () => {
+      const divEl = div({
+        "@data-first": "first-value",
+        "@data-second": "second-value",
+      });
+      expect(divEl.getAttribute("data-first")).to.equal("first-value");
+      expect(divEl.getAttribute("data-second")).to.equal("second-value");
+    });
+  });
+
+  describe("style and slot shorthand", () => {
+    it("should construct a STYLE element", () => {
+      const styleEl = style();
+      expect(styleEl.nodeName).to.equal("STYLE");
+    });
+    it("should construct a SLOT element", () => {
+      const slotEl = slot();
+      expect(slotEl.nodeName).to.equal("SLOT");
+    });
+    it("should construct a style element with content", () => {
+      const styleEl = style(".foo { color: red; }");
+      expect(styleEl.textContent).to.equal(".foo { color: red; }");
+    });
+    it("should construct a slot element with name", () => {
+      const slotEl = slot({ name: "my-slot" });
+      expect(slotEl.getAttribute("name")).to.equal("my-slot");
+    });
+  });
+
+  describe("edge cases", () => {
+    it("should handle null first argument", () => {
+      const divEl = div(null);
+      expect(divEl.childElementCount).to.equal(0);
+    });
+    it("should handle mixed children types", () => {
+      const mixedEl = div(
+        "text",
+        span("span-text"),
+        [div("array-item"), span("another")],
+        null,
+      );
+      expect(mixedEl.textContent).to.equal("textspan-textarray-itemanother");
+    });
+    it("should handle input with various properties", () => {
+      const inputEl = input({
+        type: "text",
+        placeholder: "Enter text",
+        value: "test",
+        disabled: true,
+      });
+      expect(inputEl.type).to.equal("text");
+      expect(inputEl.placeholder).to.equal("Enter text");
+      expect(inputEl.value).to.equal("test");
+      expect(inputEl.disabled).to.be.true;
     });
   });
 });
