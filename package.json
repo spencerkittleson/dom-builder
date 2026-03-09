@@ -1,6 +1,6 @@
 {
   "name": "@kanmf/dombuilder",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "HTML Dom building library",
   "module": "index.mjs",
   "types": "declarations.d.ts",
